@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Users</h2>
+<table>
+<tr>
+  <th>User</th>
+  <th>Limit</th>
+  <th>Expiry</th>
+  <th>Status</th>
+  <th>Actions</th>
+</tr>
+{% for u in users %}
+<tr>
+  <td>{{ u.username }}</td>
+  <td>{{ u.daily_limit }}</td>
+  <td>{{ u.expires_at }}</td>
+  <td>{{ u.status }}</td>
+  <td>
+    <form method="post" action="/users/{{u.username}}/ban">
+      <button class="red">Ban</button>
+    </form>
+  </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
